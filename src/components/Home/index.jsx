@@ -12,7 +12,10 @@ import { useContext, useEffect, useState } from "react";
 import { PatientContext } from "../../contexts/patients";
 import { Box, Icon } from "./styles";
 import Button from "@material-ui/core/Button";
-import loading from "../../assets/img/loading.svg";
+import  user from '../../assets/img/user.svg'
+import gender from '../../assets/img/gender.svg'
+import birth from '../../assets/img/birth.svg'
+import info from '../../assets/img/info.svg'
 import Lottie from "react-lottie";
 import { defaultOptions } from "./lottiesConfig";
 import { LoadingContext } from "../../contexts/loading";
@@ -43,14 +46,19 @@ export default function Home() {
           <Table size="small" aria-label="caption table">
             <TableHead>
               <TableRow>
-                <TableCell size="medium">Name</TableCell>
+                <TableCell size="medium"> 
+                <Icon src={user}/> Name 
+                </TableCell>
                 <TableCell size="medium" align="right">
+                <Icon src={gender}/>
                   Gender
                 </TableCell>
                 <TableCell size="medium" align="right">
+                <Icon src={birth}/>
                   Birth
                 </TableCell>
                 <TableCell size="medium" align="right">
+                <Icon src={info}/>
                   Actions
                 </TableCell>
               </TableRow>
