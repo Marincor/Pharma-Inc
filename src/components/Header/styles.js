@@ -10,4 +10,5 @@ export const BoxDiv = styled.div`
 
 export const Icon = styled.img`
   width: 2.5rem;
+  transform:${(props) => props.rotate? "rotate(45deg)": "rotate(0deg)"};
 `;

@@ -7,14 +7,15 @@ import profile from '../../assets/img/profile.png'
 import { BoxDiv, Icon } from "./styles";
 
 export default function Header() {
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar>
         <BoxDiv width='100%'>
           <BoxDiv> 
-          <Icon src={pharm} />
-          <Typography>Pharma Inc</Typography>
+          <Icon rotate src={pharm} />
+          <Typography variant='h4' sx='sm'>Pharma Inc</Typography>
           </BoxDiv>
           <BoxDiv>
               <Icon src={profile} />
