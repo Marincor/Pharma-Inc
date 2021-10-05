@@ -17,11 +17,11 @@ import gender from '../../assets/img/gender.svg'
 import birth from '../../assets/img/birth.svg'
 import info from '../../assets/img/info.svg'
 import Lottie from "react-lottie";
-import { defaultOptions } from "./lottiesConfig";
+import { defaultOptions, defaultOptions2 } from "./lottiesConfig";
 import { LoadingContext } from "../../contexts/loading";
 
 export default function Home() {
-  const { loading, setLoading } = useContext(LoadingContext);
+  const { loading, setLoading, loadingMoreContent, setLoadingMoreContent } = useContext(LoadingContext);
   const { data } = useContext(PatientContext);
   const { results, setResults } = useContext(PatientContext);
 
@@ -86,7 +86,13 @@ export default function Home() {
             <TableFooter>
               <Button color="primary" onClick={loadingMore}>
                 {" "}
-                loading more... <Icon src={loading} />
+                show more {loadingMoreContent? 
+                <div>
+                <Lottie options={defaultOptions2} height={50} width={50} />
+              </div> 
+              :
+              <span>🠗</span>
+                } 
               </Button>
             </TableFooter>
           </Table>
@@ -97,11 +103,15 @@ export default function Home() {
 
   function loadingMore() {
     setResults(results + 50);
+    setLoadingMoreContent(true) 
+    setTimeout(() => {
+        setLoadingMoreContent(false) 
+    }, 2000);
   }
 
   return (
     <Box bg="lightblue">
-      <Box width="50vw" widthMob="95vw">
+      <Box width="65vw" widthMob="95vw">
         {renderContentTable()}
       </Box>
     </Box>
