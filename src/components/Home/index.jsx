@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { useContext, useEffect, useState } from "react";
 import { PatientContext } from "../../contexts/patients";
-import { Box, Icon } from "./styles";
+import { Box, Icon, Title } from "./styles";
 import Button from "@material-ui/core/Button";
 import  user from '../../assets/img/user.svg'
 import gender from '../../assets/img/gender.svg'
@@ -47,19 +47,22 @@ export default function Home() {
             <TableHead>
               <TableRow>
                 <TableCell size="medium"> 
-                <Icon src={user}/> Name 
+                 <Title>Name <Icon src={user}/></Title>  
                 </TableCell>
                 <TableCell size="medium" align="right">
-                <Icon src={gender}/>
-                  Gender
+                    <Title> 
+                  Gender <Icon src={gender}/>
+                    </Title>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                <Icon src={birth}/>
-                  Birth
+                <Title> 
+                  Birth<Icon src={birth}/>
+                </Title>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                <Icon src={info}/>
-                  Actions
+                <Title> 
+                  Actions<Icon src={info}/>
+                </Title>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -70,11 +73,11 @@ export default function Home() {
                   <TableCell component="th" scope="row">
                     {row.name.first} {row.name.last}
                   </TableCell>
-                  <TableCell align="right">{row.gender}</TableCell>
-                  <TableCell align="right">
+                  <TableCell align="left">{row.gender}</TableCell>
+                  <TableCell align="left">
                     {row.dob.date.substr(0, 10)}
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell align="left">
                     <Button color="primary">details</Button>
                   </TableCell>
                 </TableRow>
