@@ -4,7 +4,7 @@
 > Challenge By Coodesh
 
 <a href="https://github.com/Marincor/Pharma-Inc/#Responsividade"> Responsividade </a> | <a href="https://github.com/Marincor/Pharma-Inc/#Aplicação"> Aplicação </a> | 
-<a href="https://github.com/Marincor/Pharma-Inc/#Sobre"> Sobre </a> | <a href="https://github.com/Marincor/Pharma-Inc/#Funcionalidades"> Funcionalidades </a> | <a href="https://github.com/Marincor/Pharma-Inc/#Tecnologias usadas"> Tecnologias usadas </a> | <a href="https://github.com/Marincor/Pharma-Inc/#Testes"> Testes </a> | <a href="https://github.com/Marincor/Pharma-Inc/#Instalação"> Instalação </a> 
+<a href="https://github.com/Marincor/Pharma-Inc/#Sobre"> Sobre </a> | <a href="https://github.com/Marincor/Pharma-Inc/#Funcionalidades"> Funcionalidades </a> | <a href="https://github.com/Marincor/Pharma-Inc/#tecnologias-usadas"> Tecnologias usadas </a> | <a href="https://github.com/Marincor/Pharma-Inc/#Testes"> Testes </a> | <a href="https://github.com/Marincor/Pharma-Inc/#Instalação"> Instalação </a> 
 
 
 <hr/>
