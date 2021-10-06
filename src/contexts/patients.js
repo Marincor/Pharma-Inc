@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import {PharmDataByPage, PharmDataById} from "../services/api";
 
 
@@ -11,9 +11,17 @@ export const PatientProvider = (props) => {
     const [id, setId] = useState(50)
     const [currentPatient, setCurrentPatient] = useState()
 
-    useEffect(()=>{
+
+    const fetchId = useCallback(()=>{
 
         PharmDataById(id).then(data => setCurrentPatient(data))
+
+    }, [])
+
+    useEffect(()=>{
+
+        fetchId()
+    
          PharmDataByPage(results).then(data => setData(data))
 
     }, [results])
