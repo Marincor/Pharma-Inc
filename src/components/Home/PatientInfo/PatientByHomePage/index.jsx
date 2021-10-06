@@ -63,11 +63,11 @@ export default function PatientByHomePage() {
           {currentPatient.address.country}
         </ProfileInfos>
         <ProfileInfos data-cy="profileId">
-          <Icon src={id} alt="id-icon" title="id" /> {" - "}
+          <Icon src={id} alt="id-icon" title="id" /> ID {" - "}
           {currentPatient.id}
         </ProfileInfos>
         <ProfileInfos data-cy="profileURL">
-          <Icon src={link} alt="url-icon" title="url" /> {"  "}
+          <Icon src={link} alt="url-icon" title="url" /> URL {" - "}
           {`/patient/${currentPatient.id}`}
         </ProfileInfos>
       </BoxProfileInfo>
