@@ -24,6 +24,8 @@ import SearchBar from "./SearchBar";
 import { SearchBarContext } from "../../contexts/searchBar";
 import { FilterContext } from "../../contexts/filter";
 import filterIcon from "../../assets/img/filter.svg";
+import loadingMore from "../../functions/loadingMore";
+import getUser from "../../functions/getUser";
 
 export default function Home() {
   const { loading, setLoading, loadingMoreContent, setLoadingMoreContent } =
@@ -34,60 +36,12 @@ export default function Home() {
   const { value } = useContext(SearchBarContext);
   const history = useHistory();
 
-  function getUser(
-    currentId,
-    currentName,
-    currentEmail,
-    currentGender,
-    currentBirth,
-    currentPhone,
-    currentNat,
-    currentAdd,
-    currentImg
-  ) {
-    if (currentId !== null) {
-      setId(currentId);
-      setCurrentPatient({
-        name: currentName,
-        email: currentEmail,
-        gender: currentGender,
-        birth: currentBirth,
-        phone: currentPhone,
-        nationality: currentNat,
-        address: currentAdd,
-        id: currentId,
-        url: `/patient/${currentId}`,
-        img: currentImg,
-      });
-      history.push(`/patient/${currentId}`);
-    } else {
-      const newId = JSON.stringify(Math.round(Math.random() * 14));
-      setId(newId);
-      setCurrentPatient({
-        name: currentName,
-        email: currentEmail,
-        gender: currentGender,
-        birth: currentBirth,
-        phone: currentPhone,
-        nationality: currentNat,
-        address: currentAdd,
-        id: currentId,
-        url: `/patient/${newId}`,
-        img: currentImg,
-      });
-      history.push(`/patient/${newId}`);
-    }
-  }
-
   useEffect(() => {
     setLoading(true);
 
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-
-
- 
   }, []);
 
   const filteredPatients = () => {
@@ -108,8 +62,6 @@ export default function Home() {
     } else {
       return data.results;
     }
-
-   
   };
   filteredPatients()?.sort(function (a, b) {
     return a.name.first < b.name.first
@@ -186,13 +138,15 @@ export default function Home() {
                     <TableCell data-cy="nameValue" component="th" scope="row">
                       {row.name.first} {row.name.last}
                     </TableCell>
-                    <TableCell data-cy="genderValue" align="left">{row.gender}</TableCell>
+                    <TableCell data-cy="genderValue" align="left">
+                      {row.gender}
+                    </TableCell>
                     <TableCell data-cy="dateValue" align="left">
                       {row.dob.date.substr(0, 10)}
                     </TableCell>
                     <TableCell data-cy="actionValue" align="left">
                       <Button
-                      data-cy="btnDetail"
+                        data-cy="btnDetail"
                         color="primary"
                         onClick={() => {
                           getUser(
@@ -204,7 +158,10 @@ export default function Home() {
                             row.phone,
                             row.nat,
                             row.location,
-                            row.picture.large
+                            row.picture.large,
+                            setId,
+                            setCurrentPatient,
+                            history
                           );
                         }}
                       >
@@ -215,7 +172,13 @@ export default function Home() {
                 ))}
               </TableBody>
               <TableFooter>
-                <Button data-cy="loadingMore" color="primary" onClick={loadingMore}>
+                <Button
+                  data-cy="loadingMore"
+                  color="primary"
+                  onClick={() => {
+                    loadingMore(setResults, results, setLoadingMoreContent);
+                  }}
+                >
                   {" "}
                   loading more{" "}
                   {loadingMoreContent ? (
@@ -236,14 +199,6 @@ export default function Home() {
         </BoxContainer>
       );
     }
-  }
-
-  function loadingMore() {
-    setResults(results + 50);
-    setLoadingMoreContent(true);
-    setTimeout(() => {
-      setLoadingMoreContent(false);
-    }, 2000);
   }
 
   return (
