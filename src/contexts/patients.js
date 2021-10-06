@@ -13,8 +13,8 @@ export const PatientProvider = (props) => {
 
     useEffect(()=>{
 
+        PharmDataById(id).then(data => setCurrentPatient(data))
          PharmDataByPage(results).then(data => setData(data))
-         PharmDataById(id).then(data => setCurrentPatient(data))
 
     }, [results])
 

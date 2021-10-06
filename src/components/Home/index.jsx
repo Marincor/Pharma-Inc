@@ -8,7 +8,7 @@ import {
   TableHead,
   TableRow,
 } from "@material-ui/core";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { PatientContext } from "../../contexts/patients";
 import { Box, BoxContainer, BtnFilter, Icon, Title } from "./styles";
 import Button from "@material-ui/core/Button";
@@ -42,7 +42,7 @@ export default function Home() {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  }, []);
+  }, [setLoading]);
 
   const filteredPatients = () => {
     if (value) {

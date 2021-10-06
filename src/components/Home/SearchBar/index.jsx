@@ -15,7 +15,7 @@ export default function SearchBar() {
       arr.push(`${item.name.first} ${item.name.last}`);
      return setContentBar(arr);
     });
-  }, []);
+  },);
 
   return (
     <Autocomplete
