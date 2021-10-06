@@ -5,13 +5,12 @@ export const SearchBarContext = createContext()
 
 
 export const SearchBarProvider = (props) =>{
-    const [value, setValue] = useState();
-    const [inputValue, setInputValue] = useState('');
+    const [value, setValue] = useState("");
     const [contentBar, setContentBar] = useState([])
 
     return(
 
-        <SearchBarContext.Provider value={{value, setValue, inputValue, setInputValue, contentBar, setContentBar}}>
+        <SearchBarContext.Provider value={{value, setValue, contentBar, setContentBar}}>
                 {props.children}
         </SearchBarContext.Provider>
     )

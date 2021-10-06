@@ -8,7 +8,7 @@ import { SearchBarContext } from '../../../contexts/searchBar';
 export default function SearchBar() {
 
     const { data } = useContext(PatientContext);
-    const {value, setValue, inputValue, setInputValue, contentBar, setContentBar} = useContext(SearchBarContext)
+    const {value, setValue, contentBar, setContentBar} = useContext(SearchBarContext)
 
     useEffect(()=>{
 
@@ -23,11 +23,11 @@ export default function SearchBar() {
 
     }, [])
 
-console.log(value)
   return (
     <Autocomplete
     value={value}
     onChange={(event, newValue) => {
+     
       setValue(newValue);
     }}
       disablePortal
