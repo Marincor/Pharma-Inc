@@ -1,5 +1,21 @@
 import styled from "styled-components";
 
+export const BoxContainer = styled.div `
+
+  width: 95vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+@media screen and (min-width: 768px) {
+
+  width: auto;
+}
+
+`
+
 export const Box = styled.div`
   flex-direction: column;
   margin-top: 2.5rem;
@@ -30,5 +46,15 @@ export const Icon = styled.img`
 export const Title = styled.h2`
   font-weight: bold;
   text-align: left;
-  width: 5rem;
+  width: 8rem;
+
 `;
+
+export const BtnFilter = styled.button `
+
+  cursor: pointer;
+  width: 1rem;
+  background-color: transparent;
+  border: none;
+
+`

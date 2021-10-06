@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import { useContext, useEffect, useState } from "react";
 import { PatientContext } from "../../contexts/patients";
-import { Box, Icon, Title } from "./styles";
+import { Box, BoxContainer, BtnFilter, Icon, Title } from "./styles";
 import Button from "@material-ui/core/Button";
 import user from "../../assets/img/user.svg";
 import gender from "../../assets/img/gender.svg";
@@ -22,6 +22,8 @@ import { LoadingContext } from "../../contexts/loading";
 import { useHistory } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { SearchBarContext } from "../../contexts/searchBar";
+import { FilterContext } from "../../contexts/filter";
+import filterIcon from '../../assets/img/filter.svg'
 
 export default function Home() {
   const { loading, setLoading, loadingMoreContent, setLoadingMoreContent } =
@@ -31,9 +33,9 @@ export default function Home() {
     results,
     setResults,
     setId,
-    currentPatient,
     setCurrentPatient,
   } = useContext(PatientContext);
+  const {currentGender, setCurrentGender} = useContext(FilterContext)
   const { value } = useContext(SearchBarContext);
   const history = useHistory();
 
@@ -96,13 +98,43 @@ export default function Home() {
       return data.results?.filter(
         (atribute) => `${atribute.name.first} ${atribute.name.last}` === value
       );
-    } else {
+    } else if(currentGender) {
+
+      const gender = data?.results?.filter((o) => o.gender === currentGender);
+      let result = gender[0];
+      for (let obj of gender) {
+        if (obj.dob.age < result.dob.age) {
+          result = obj;
+        }
+      }
+    
+      return gender
+
+    }
+    
+    
+    else {
       return data.results
 
     }
   };
 
  
+function filterGender() {
+
+  if(currentGender === null) {
+
+    setCurrentGender("female")
+  } else if(currentGender === "female") {
+
+    setCurrentGender("male")
+  } else {
+
+    setCurrentGender(null)
+  }
+}
+
+
   function renderContentTable() {
     if (data?.results && loading) {
       return (
@@ -112,7 +144,7 @@ export default function Home() {
       );
     } else if (data?.results) {
       return (
-        <Box>
+        <BoxContainer>
           <SearchBar />
           <TableContainer component={Paper}>
             <Table size="small" aria-label="caption table">
@@ -125,6 +157,7 @@ export default function Home() {
                   </TableCell>
                   <TableCell size="medium" align="right">
                     <Title>
+                    <BtnFilter onClick={filterGender}><Icon src={filterIcon} alt="filter-icon" title="filter by gender" /></BtnFilter> {" "}
                       Gender{" "}
                       <Icon src={gender} alt="gender-icon" title="gender" />
                     </Title>
@@ -199,7 +232,7 @@ export default function Home() {
               </TableFooter>
             </Table>
           </TableContainer>
-        </Box>
+        </BoxContainer>
       );
     }
   }
