@@ -23,19 +23,14 @@ import { useHistory } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { SearchBarContext } from "../../contexts/searchBar";
 import { FilterContext } from "../../contexts/filter";
-import filterIcon from '../../assets/img/filter.svg'
+import filterIcon from "../../assets/img/filter.svg";
 
 export default function Home() {
   const { loading, setLoading, loadingMoreContent, setLoadingMoreContent } =
     useContext(LoadingContext);
-  const {
-    data,
-    results,
-    setResults,
-    setId,
-    setCurrentPatient,
-  } = useContext(PatientContext);
-  const {currentGender, setCurrentGender} = useContext(FilterContext)
+  const { data, results, setResults, setId, setCurrentPatient } =
+    useContext(PatientContext);
+  const { currentGender, setCurrentGender } = useContext(FilterContext);
   const { value } = useContext(SearchBarContext);
   const history = useHistory();
 
@@ -90,16 +85,17 @@ export default function Home() {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  }, []);
 
+
+ 
+  }, []);
 
   const filteredPatients = () => {
     if (value) {
       return data.results?.filter(
         (atribute) => `${atribute.name.first} ${atribute.name.last}` === value
       );
-    } else if(currentGender) {
-
+    } else if (currentGender) {
       const gender = data?.results?.filter((o) => o.gender === currentGender);
       let result = gender[0];
       for (let obj of gender) {
@@ -107,33 +103,31 @@ export default function Home() {
           result = obj;
         }
       }
-    
-      return gender
 
+      return gender;
+    } else {
+      return data.results;
     }
-    
-    
-    else {
-      return data.results
 
-    }
+   
   };
+  filteredPatients()?.sort(function (a, b) {
+    return a.name.first < b.name.first
+      ? -1
+      : a.name.first > b.name.first
+      ? 1
+      : 0;
+  });
 
- 
-function filterGender() {
-
-  if(currentGender === null) {
-
-    setCurrentGender("female")
-  } else if(currentGender === "female") {
-
-    setCurrentGender("male")
-  } else {
-
-    setCurrentGender(null)
+  function filterGender() {
+    if (currentGender === null) {
+      setCurrentGender("female");
+    } else if (currentGender === "female") {
+      setCurrentGender("male");
+    } else {
+      setCurrentGender(null);
+    }
   }
-}
-
 
   function renderContentTable() {
     if (data?.results && loading) {
@@ -157,7 +151,13 @@ function filterGender() {
                   </TableCell>
                   <TableCell size="medium" align="right">
                     <Title>
-                    <BtnFilter onClick={filterGender}><Icon src={filterIcon} alt="filter-icon" title="filter by gender" /></BtnFilter> {" "}
+                      <BtnFilter onClick={filterGender}>
+                        <Icon
+                          src={filterIcon}
+                          alt="filter-icon"
+                          title="filter by gender"
+                        />
+                      </BtnFilter>{" "}
                       Gender{" "}
                       <Icon src={gender} alt="gender-icon" title="gender" />
                     </Title>
