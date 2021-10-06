@@ -5,11 +5,13 @@ import "./assets/css/reset.css";
 import { PatientProvider } from "./contexts/patients";
 import { LoadingProvider } from "./contexts/loading";
 import Patient from "./components/Home/PatientInfo";
+import { SearchBarProvider } from "./contexts/searchBar";
 function App() {
   return (
     <div>
       <LoadingProvider>
         <PatientProvider>
+          <SearchBarProvider> 
           <Router>
             <MenuAppBar />
             <Switch>
@@ -22,6 +24,7 @@ function App() {
               </Route>
             </Switch>
           </Router>
+          </SearchBarProvider>
         </PatientProvider>
       </LoadingProvider>
     </div>

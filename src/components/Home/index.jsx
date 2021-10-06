@@ -20,6 +20,7 @@ import Lottie from "react-lottie";
 import { defaultOptions, defaultOptions2 } from "./lottiesConfig";
 import { LoadingContext } from "../../contexts/loading";
 import { useHistory } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 export default function Home() {
   const { loading, setLoading, loadingMoreContent, setLoadingMoreContent } =
@@ -87,7 +88,10 @@ export default function Home() {
       );
     } else if (data?.results) {
       return (
+        <Box> 
+       <SearchBar />
         <TableContainer component={Paper}>
+          
           <Table size="small" aria-label="caption table">
             <TableHead>
               <TableRow>
@@ -133,7 +137,7 @@ export default function Home() {
                       onClick={() => {
                         getUser(row.id.value, `${row.name.first} ${row.name.last}`, row.email, row.gender, row.dob.date.substr(0, 10), row.phone,row.nat, row.location, row.picture.large);
                       }}
-                    >
+                      >
                       details
                     </Button>
                   </TableCell>
@@ -150,11 +154,12 @@ export default function Home() {
                   </div>
                 ) : (
                   <span>🠗</span>
-                )}
+                  )}
               </Button>
             </TableFooter>
           </Table>
         </TableContainer>
+                  </Box>
       );
     }
   }

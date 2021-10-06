@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Box = styled.div`
+  flex-direction: column;
   margin-top: 2.5rem;
   padding-bottom: 2rem;
   width: ${(props) => props.widthMob};
@@ -31,4 +32,3 @@ export const Title = styled.h2`
   text-align: left;
   width: 5rem;
 `;
-

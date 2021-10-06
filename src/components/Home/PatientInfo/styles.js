@@ -22,7 +22,7 @@ export const BoxModal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 1rem;
 `;
 
@@ -51,6 +51,7 @@ export const BoxProfileInfo = styled.div`
   justify-content: center;
   align-items: center;
   text-align: left;
+  margin-bottom: 2rem;
 `;
 
 export const ProfileName = styled.h2`
