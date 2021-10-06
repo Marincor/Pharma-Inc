@@ -7,6 +7,7 @@ import { LoadingProvider } from "./contexts/loading";
 import Patient from "./components/Home/PatientInfo";
 import { SearchBarProvider } from "./contexts/searchBar";
 import { FilterProvider } from "./contexts/filter";
+import Page404 from "./components/404/404";
 function App() {
   return (
     <div>
@@ -23,6 +24,7 @@ function App() {
                   <Route path="/patient">
                     <Patient />
                   </Route>
+                  <Page404/>
                 </Switch>
               </Router>
             </FilterProvider>
