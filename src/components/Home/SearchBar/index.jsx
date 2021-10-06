@@ -25,6 +25,7 @@ export default function SearchBar() {
 
   return (
     <Autocomplete
+    data-cy="searchBar"
     value={value}
     onChange={(event, newValue) => {
      

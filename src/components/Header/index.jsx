@@ -16,12 +16,12 @@ export default function Header() {
           <BoxDiv> 
             <Link className="link" to='/'>
             
-          <Icon rotate src={pharm} alt="Pharm Inc logo" title="Pharm Inc" />
+          <Icon rotate src={pharm} data-cy="logo" alt="Pharm Inc logo" title="Pharm Inc" />
           <Typography variant='h4' sx='sm'>Pharma Inc</Typography>
             </Link>
           </BoxDiv>
           <BoxDiv>
-              <Icon src={profile} alt="profile icon" />
+              <Icon src={profile} data-cy="profile" alt="profile icon" />
           </BoxDiv>
         </BoxDiv>
         </Toolbar>

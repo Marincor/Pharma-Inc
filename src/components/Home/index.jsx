@@ -144,12 +144,12 @@ export default function Home() {
             <Table size="small" aria-label="caption table">
               <TableHead>
                 <TableRow>
-                  <TableCell size="medium">
+                  <TableCell data-cy="name" size="medium">
                     <Title>
                       Name <Icon src={user} alt="name-icon" title="name" />
                     </Title>
                   </TableCell>
-                  <TableCell size="medium" align="right">
+                  <TableCell data-cy="gender" size="medium" align="right">
                     <Title>
                       <BtnFilter onClick={filterGender}>
                         <Icon
@@ -162,13 +162,13 @@ export default function Home() {
                       <Icon src={gender} alt="gender-icon" title="gender" />
                     </Title>
                   </TableCell>
-                  <TableCell size="medium" align="right">
+                  <TableCell data-cy="birth" size="medium" align="right">
                     <Title>
                       Birth
                       <Icon src={birth} alt="birth-icon" title="birth" />
                     </Title>
                   </TableCell>
-                  <TableCell size="medium" align="right">
+                  <TableCell data-cy="actions" size="medium" align="right">
                     <Title>
                       Actions
                       <Icon
@@ -183,15 +183,16 @@ export default function Home() {
               <TableBody>
                 {filteredPatients().map((row, index) => (
                   <TableRow key={` ${index} - ${row.id.value}`}>
-                    <TableCell component="th" scope="row">
+                    <TableCell data-cy="nameValue" component="th" scope="row">
                       {row.name.first} {row.name.last}
                     </TableCell>
-                    <TableCell align="left">{row.gender}</TableCell>
-                    <TableCell align="left">
+                    <TableCell data-cy="genderValue" align="left">{row.gender}</TableCell>
+                    <TableCell data-cy="dateValue" align="left">
                       {row.dob.date.substr(0, 10)}
                     </TableCell>
-                    <TableCell align="left">
+                    <TableCell data-cy="actionValue" align="left">
                       <Button
+                      data-cy="btnDetail"
                         color="primary"
                         onClick={() => {
                           getUser(
@@ -214,7 +215,7 @@ export default function Home() {
                 ))}
               </TableBody>
               <TableFooter>
-                <Button color="primary" onClick={loadingMore}>
+                <Button data-cy="loadingMore" color="primary" onClick={loadingMore}>
                   {" "}
                   loading more{" "}
                   {loadingMoreContent ? (
