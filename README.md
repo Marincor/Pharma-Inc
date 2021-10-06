@@ -76,4 +76,3 @@ Aplicação para gerenciamento de pacientes. Foi criada como desafio para a plat
 - Instale as dependências digitando o comando:  <code> npm install </code> ou  <code> yarn install </code>
 - Execute o projeto: <code> yarn start </code>  ou <code> npm start </code> 
 - Caso o navegador não abra automaticamente, digite o endereço: http://localhost:3000/
-
