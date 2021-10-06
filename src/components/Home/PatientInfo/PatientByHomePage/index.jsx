@@ -14,7 +14,7 @@ import birth from "../../../../assets/img/birth.svg";
 import phone from "../../../../assets/img/phone.svg";
 import link from "../../../../assets/img/link.svg";
 import nation from "../../../../assets/img/nation.svg";
-import address from "../../../../assets/img/address.svg";
+import address from "../../../../assets/img/address.png";
 import id from "../../../../assets/img/id.svg";
 
 export default function PatientByHomePage() {

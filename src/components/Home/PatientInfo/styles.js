@@ -9,7 +9,6 @@ export const BoxPatient = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-end;
-
 `;
 
 export const BoxModal = styled.div`
@@ -44,6 +43,7 @@ export const ProfileImage = styled.div`
 `;
 
 export const BoxProfileInfo = styled.div`
+  transform: translateY(-2rem);
   width: 100%;
   height: auto;
   display: flex;
@@ -52,6 +52,10 @@ export const BoxProfileInfo = styled.div`
   align-items: center;
   text-align: left;
   margin-bottom: 2rem;
+
+  @media screen and (min-width: 1024px) {
+    transform: translateY(-4rem);
+  }
 `;
 
 export const ProfileName = styled.h2`

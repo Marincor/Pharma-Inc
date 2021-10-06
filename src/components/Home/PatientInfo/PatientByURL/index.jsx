@@ -14,7 +14,7 @@ import birth from "../../../../assets/img/birth.svg";
 import phone from "../../../../assets/img/phone.svg";
 import link from "../../../../assets/img/link.svg";
 import nation from "../../../../assets/img/nation.svg";
-import address from "../../../../assets/img/address.svg";
+import address from "../../../../assets/img/address.png";
 import id from "../../../../assets/img/id.svg";
 
 export default function PatientByURL() {
@@ -64,11 +64,11 @@ export default function PatientByURL() {
           {currentPatient.results[0].location.country}
         </ProfileInfos>
         <ProfileInfos data-cy="profileId">
-          <Icon src={id} alt="id-icon" title="id" /> {" - "}
+          <Icon src={id} alt="id-icon" title="id" />  ID {" - "}
           {currentPatient.results[0].id.value}
         </ProfileInfos>
         <ProfileInfos data-cy="profileURL">
-          <Icon src={link} alt="url-icon" title="url" /> {"  "}
+          <Icon src={link} alt="url-icon" title="url" />  URL {" - "}
           {`/patient/${currentPatient.results[0]?.id.value}`}
         </ProfileInfos>
       </BoxProfileInfo>
