@@ -12,19 +12,63 @@ import { useContext, useEffect, useState } from "react";
 import { PatientContext } from "../../contexts/patients";
 import { Box, Icon, Title } from "./styles";
 import Button from "@material-ui/core/Button";
-import  user from '../../assets/img/user.svg'
-import gender from '../../assets/img/gender.svg'
-import birth from '../../assets/img/birth.svg'
-import info from '../../assets/img/info.svg'
+import user from "../../assets/img/user.svg";
+import gender from "../../assets/img/gender.svg";
+import birth from "../../assets/img/birth.svg";
+import info from "../../assets/img/info.svg";
 import Lottie from "react-lottie";
 import { defaultOptions, defaultOptions2 } from "./lottiesConfig";
 import { LoadingContext } from "../../contexts/loading";
-import {Link} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 export default function Home() {
-  const { loading, setLoading, loadingMoreContent, setLoadingMoreContent } = useContext(LoadingContext);
-  const { data } = useContext(PatientContext);
-  const { results, setResults } = useContext(PatientContext);
+  const { loading, setLoading, loadingMoreContent, setLoadingMoreContent } =
+    useContext(LoadingContext);
+  const { data, results, setResults,setId, currentPatient, setCurrentPatient } = useContext(PatientContext);
+  const history = useHistory();
+
+  console.log(currentPatient)
+  
+  function getUser(currentId, currentName, currentEmail, currentGender, currentBirth, currentPhone, currentNat, currentAdd, currentImg) {
+
+
+    if (currentId !== null) {
+      setId(currentId);
+      setCurrentPatient({
+
+        name: currentName,
+        email: currentEmail,
+        gender: currentGender,
+        birth: currentBirth,
+        phone: currentPhone,
+        nationality: currentNat,
+        address: currentAdd,
+        id: currentId, 
+        url: `/patient/${currentId}`,
+        img: currentImg,
+
+      })
+      history.push(`/patient/${currentId}`);
+    } else {
+      const newId = JSON.stringify(Math.round(Math.random() * 14));
+      setId(newId);
+      setCurrentPatient({
+
+        name: currentName,
+        email: currentEmail,
+        gender: currentGender,
+        birth: currentBirth,
+        phone: currentPhone,
+        nationality: currentNat,
+        address: currentAdd,
+        id: currentId, 
+        url: `/patient/${newId}`,
+        img: currentImg,
+
+      })
+      history.push(`/patient/${newId}`);
+    }
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -47,23 +91,28 @@ export default function Home() {
           <Table size="small" aria-label="caption table">
             <TableHead>
               <TableRow>
-                <TableCell size="medium"> 
-                 <Title>Name <Icon src={user} alt="name-icon" title="name"/></Title>  
+                <TableCell size="medium">
+                  <Title>
+                    Name <Icon src={user} alt="name-icon" title="name" />
+                  </Title>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                    <Title> 
-                  Gender <Icon src={gender} alt="gender-icon" title="gender"/>
-                    </Title>
+                  <Title>
+                    Gender{" "}
+                    <Icon src={gender} alt="gender-icon" title="gender" />
+                  </Title>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                <Title> 
-                  Birth<Icon src={birth} alt="birth-icon" title="birth"/>
-                </Title>
+                  <Title>
+                    Birth
+                    <Icon src={birth} alt="birth-icon" title="birth" />
+                  </Title>
                 </TableCell>
                 <TableCell size="medium" align="right">
-                <Title> 
-                  Actions<Icon src={info} alt="actions-icon" title="actions-info"/>
-                </Title>
+                  <Title>
+                    Actions
+                    <Icon src={info} alt="actions-icon" title="actions-info" />
+                  </Title>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -79,7 +128,14 @@ export default function Home() {
                     {row.dob.date.substr(0, 10)}
                   </TableCell>
                   <TableCell align="left">
-                    <Button color="primary"><Link to='/patient'> details</Link></Button>
+                    <Button
+                      color="primary"
+                      onClick={() => {
+                        getUser(row.id.value, `${row.name.first} ${row.name.last}`, row.email, row.gender, row.dob.date.substr(0, 10), row.phone,row.nat, row.location, row.picture.large);
+                      }}
+                    >
+                      details
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -87,13 +143,14 @@ export default function Home() {
             <TableFooter>
               <Button color="primary" onClick={loadingMore}>
                 {" "}
-                loading more {loadingMoreContent? 
-                <div>
-                <Lottie options={defaultOptions2} height={50} width={50} />
-              </div> 
-              :
-              <span>🠗</span>
-                } 
+                loading more{" "}
+                {loadingMoreContent ? (
+                  <div>
+                    <Lottie options={defaultOptions2} height={50} width={50} />
+                  </div>
+                ) : (
+                  <span>🠗</span>
+                )}
               </Button>
             </TableFooter>
           </Table>
@@ -104,9 +161,9 @@ export default function Home() {
 
   function loadingMore() {
     setResults(results + 50);
-    setLoadingMoreContent(true) 
+    setLoadingMoreContent(true);
     setTimeout(() => {
-        setLoadingMoreContent(false) 
+      setLoadingMoreContent(false);
     }, 2000);
   }
 

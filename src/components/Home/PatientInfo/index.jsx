@@ -4,6 +4,7 @@ import {
   BoxModal,
   BoxPatient,
   BoxProfileInfo,
+  Btn,
   Icon,
   ProfileImage,
   ProfileInfos,
@@ -19,22 +20,75 @@ import address from "../../../assets/img/address.svg";
 import id from "../../../assets/img/id.svg";
 import link from "../../../assets/img/link.svg";
 
-
 export default function Patient() {
-  const { currentPatient, setCurrentPatient } = useContext(PatientContext);
-
-  console.log(currentPatient);
+  const { currentPatient } = useContext(PatientContext);
 
   function renderModal() {
-    if (currentPatient?.results[0]) {
-      console.log(currentPatient.results[0]);
+    if (currentPatient?.name) {
       return (
         <>
-          <ProfileImage img={currentPatient.results[0].picture.large} alt="profile-image" title={`${currentPatient.results[0].name.first} image`}  />
+          <ProfileImage
+            img={currentPatient.img}
+            alt="profile-image"
+            title={`${currentPatient.name} image`}
+          />
           <BoxProfileInfo>
             <ProfileName>
               {" "}
-              <Icon src={user} alt="user-icon" title="name"/> {" - "}
+              <Icon src={user} alt="user-icon" title="name" /> {" - "}
+              {currentPatient.name}
+            </ProfileName>
+            <ProfileInfos>
+              <Icon src={email} alt="email-icon" title="email" /> {" - "}
+              {currentPatient.email}
+            </ProfileInfos>
+            <ProfileInfos>
+              <Icon src={gender} alt="gender-icon" title="gender" /> {" - "}
+              {currentPatient.gender}
+            </ProfileInfos>
+            <ProfileInfos>
+              <Icon src={birth} alt="birth-icon" title="birth" /> {" - "}
+              {currentPatient.birth}
+            </ProfileInfos>
+            <ProfileInfos>
+              <Icon src={phone} alt="phone-icon" title="phone" /> {" - "}
+              {currentPatient.phone}
+            </ProfileInfos>
+            <ProfileInfos>
+              <Icon src={nation} alt="nationality-icon" title="nationality" />{" "}
+              {" - "}
+              {currentPatient.nationality}
+            </ProfileInfos>
+            <ProfileInfos>
+              <Icon src={address} alt="address-icon" title="address" /> {" - "}{" "}
+              {currentPatient.address.street.name}, n°{" "}
+              {currentPatient.address.street.number} / State -{" "}
+              {currentPatient.address.state} / Country -{" "}
+              {currentPatient.address.country}
+            </ProfileInfos>
+            <ProfileInfos>
+              <Icon src={id} alt="id-icon" title="id" /> {" - "}
+              {currentPatient.id}
+            </ProfileInfos>
+            <ProfileInfos>
+              <Icon src={link} alt="url-icon" title="url" /> {"  "}
+              {`/patient/${currentPatient.id}`}
+            </ProfileInfos>
+          </BoxProfileInfo>
+        </>
+      );
+    } else if (currentPatient?.results[0]) {
+      return (
+        <>
+          <ProfileImage
+            img={currentPatient?.results[0]?.picture.large}
+            alt="profile-image"
+            title={`${currentPatient.results[0].name.first} image`}
+          />
+          <BoxProfileInfo>
+            <ProfileName>
+              {" "}
+              <Icon src={user} alt="user-icon" title="name" /> {" - "}
               {currentPatient.results[0].name.first}{" "}
               {currentPatient.results[0].name.last}
             </ProfileName>
@@ -55,22 +109,24 @@ export default function Patient() {
               {currentPatient.results[0].phone}
             </ProfileInfos>
             <ProfileInfos>
-              <Icon src={nation} alt="nationality-icon" title="nationality" />  {" - "}
+              <Icon src={nation} alt="nationality-icon" title="nationality" />{" "}
+              {" - "}
               {currentPatient.results[0].nat}
             </ProfileInfos>
             <ProfileInfos>
-            <Icon src={address} alt="address-icon" title="address"  /> {" - "} Street {currentPatient.results[0].location.street.name},
-              n° {currentPatient.results[0].location.street.number} / State -{" "}
+              <Icon src={address} alt="address-icon" title="address" /> {" - "}{" "}
+              {currentPatient.results[0].location.street.name}, n°{" "}
+              {currentPatient.results[0].location.street.number} / State -{" "}
               {currentPatient.results[0].location.state} / Country -{" "}
               {currentPatient.results[0].location.country}
             </ProfileInfos>
             <ProfileInfos>
-            <Icon src={id} alt="id-icon" title="id"  /> {" - "}
-               {currentPatient.results[0].id.value}
+              <Icon src={id} alt="id-icon" title="id" /> {" - "}
+              {currentPatient.results[0].id.value}
             </ProfileInfos>
             <ProfileInfos>
-            <Icon src={link} alt="url-icon" title="url"  /> {"  "}
-              {`/patient/${currentPatient.results[0].id.value}`}
+              <Icon src={link} alt="url-icon" title="url" /> {"  "}
+              {`/patient/${currentPatient.results[0]?.id.value}`}
             </ProfileInfos>
           </BoxProfileInfo>
         </>
