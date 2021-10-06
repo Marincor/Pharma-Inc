@@ -16,7 +16,7 @@ export const PatientProvider = (props) => {
 
         PharmDataById(id).then(data => setCurrentPatient(data))
 
-    }, [])
+    }, [])// eslint-disable-next-line react-hooks/exhaustive-deps
 
     useEffect(()=>{
 
@@ -24,7 +24,7 @@ export const PatientProvider = (props) => {
     
          PharmDataByPage(results).then(data => setData(data))
 
-    }, [results])
+    }, [results])// eslint-disable-next-line react-hooks/exhaustive-deps
 
     return(
 
