@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import "./assets/css/reset.css";
 import { PatientProvider } from "./contexts/patients";
 import { LoadingProvider } from "./contexts/loading";
+import Patient from "./components/Home/PatientInfo";
 function App() {
   return (
     <div>
@@ -14,6 +15,10 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <Home />
+              </Route>
+              <Route path="/patient"> 
+
+                <Patient />
               </Route>
             </Switch>
           </Router>

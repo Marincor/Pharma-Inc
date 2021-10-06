@@ -6,6 +6,13 @@ export const BoxDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: ${(props) => props.width};
+
+  .link{
+
+    text-decoration: none;
+    color: white;
+    display: flex;
+  }
 `;
 
 export const Icon = styled.img`

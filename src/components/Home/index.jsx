@@ -19,6 +19,7 @@ import info from '../../assets/img/info.svg'
 import Lottie from "react-lottie";
 import { defaultOptions, defaultOptions2 } from "./lottiesConfig";
 import { LoadingContext } from "../../contexts/loading";
+import {Link} from 'react-router-dom'
 
 export default function Home() {
   const { loading, setLoading, loadingMoreContent, setLoadingMoreContent } = useContext(LoadingContext);
@@ -47,21 +48,21 @@ export default function Home() {
             <TableHead>
               <TableRow>
                 <TableCell size="medium"> 
-                 <Title>Name <Icon src={user}/></Title>  
+                 <Title>Name <Icon src={user} alt="name-icon" title="name"/></Title>  
                 </TableCell>
                 <TableCell size="medium" align="right">
                     <Title> 
-                  Gender <Icon src={gender}/>
+                  Gender <Icon src={gender} alt="gender-icon" title="gender"/>
                     </Title>
                 </TableCell>
                 <TableCell size="medium" align="right">
                 <Title> 
-                  Birth<Icon src={birth}/>
+                  Birth<Icon src={birth} alt="birth-icon" title="birth"/>
                 </Title>
                 </TableCell>
                 <TableCell size="medium" align="right">
                 <Title> 
-                  Actions<Icon src={info}/>
+                  Actions<Icon src={info} alt="actions-icon" title="actions-info"/>
                 </Title>
                 </TableCell>
               </TableRow>
@@ -78,7 +79,7 @@ export default function Home() {
                     {row.dob.date.substr(0, 10)}
                   </TableCell>
                   <TableCell align="left">
-                    <Button color="primary">details</Button>
+                    <Button color="primary"><Link to='/patient'> details</Link></Button>
                   </TableCell>
                 </TableRow>
               ))}
@@ -86,7 +87,7 @@ export default function Home() {
             <TableFooter>
               <Button color="primary" onClick={loadingMore}>
                 {" "}
-                show more {loadingMoreContent? 
+                loading more {loadingMoreContent? 
                 <div>
                 <Lottie options={defaultOptions2} height={50} width={50} />
               </div> 

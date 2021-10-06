@@ -31,3 +31,4 @@ export const Title = styled.h2`
   text-align: left;
   width: 5rem;
 `;
+
