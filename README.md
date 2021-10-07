@@ -38,6 +38,8 @@ Aplicação para gerenciamento de pacientes. Foi criada como desafio para a plat
 - Filtro de gênero;
 - Lista ordenada alfabeticamente;
 - Carregamento limitado a 50 pacientes iniciais, com loading dinâmico ao clicar em "loading more" (+50 pacientes a cada requisição);
+- Ao clicar em 'details" o usuario tem acesso a uma ficha completa do cliente selecionado;
+- o ID do cliente é utilizado como extensão da URL, simulando o cenário ideal para um ambiente de produção, entretanto, a api da random user até suporta requisição via ID, mas gera um novo cliente diferente a cada requisição, impossibilitando a funcionalidade em si de ser prática, servindo apenas para propósitos ilustrativos.
 
 # Tecnologias usadas:
 
@@ -76,4 +78,3 @@ Aplicação para gerenciamento de pacientes. Foi criada como desafio para a plat
 - Instale as dependências digitando o comando:  <code> npm install </code> ou  <code> yarn install </code>
 - Execute o projeto: <code> yarn start </code>  ou <code> npm start </code> 
 - Caso o navegador não abra automaticamente, digite o endereço: http://localhost:3000/
-
