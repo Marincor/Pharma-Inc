@@ -146,6 +146,8 @@ export default function Home() {
                     </TableCell>
                     <TableCell data-cy="actionValue" align="left">
                       <Button
+                      variant="contained"
+                      size="small"
                         data-cy="btnDetail"
                         color="primary"
                         onClick={() => {
