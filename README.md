@@ -39,7 +39,7 @@ Aplicação para gerenciamento de pacientes. Foi criada como desafio para a plat
 - Lista ordenada alfabeticamente;
 - Carregamento limitado a 50 pacientes iniciais, com loading dinâmico ao clicar em "loading more" (+50 pacientes a cada requisição);
 - Ao clicar em 'details" o usuario tem acesso a uma ficha completa do cliente selecionado;
-- o ID do cliente é utilizado como extensão da URL, simulando o cenário ideal para um ambiente de produção, entretanto, a api da random user até suporta requisição via ID, mas gerando um novo cliente diferente para aquele ID em toda requisição, impossibilitando a funcionalidade em si de ser mais prática, servindo apenas para propósitos ilustrativos.
+- o ID do cliente é utilizado como extensão da URL, simulando o cenário ideal para um ambiente de produção, entretanto, a api da random user até suporta requisição via ID, mas gera um novo cliente diferente a cada requisição, impossibilitando a funcionalidade em si de ser prática, servindo apenas para propósitos ilustrativos.
 
 # Tecnologias usadas:
 
